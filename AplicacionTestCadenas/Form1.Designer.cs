@@ -41,6 +41,7 @@
             this.btnQuitarEspacios = new System.Windows.Forms.Button();
             this.btnEncontrarOperadorCentral = new System.Windows.Forms.Button();
             this.btnAtomica = new System.Windows.Forms.Button();
+            this.btnCrearArbol = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -154,7 +155,7 @@
             // 
             // btnAtomica
             // 
-            this.btnAtomica.Location = new System.Drawing.Point(205, 214);
+            this.btnAtomica.Location = new System.Drawing.Point(16, 206);
             this.btnAtomica.Name = "btnAtomica";
             this.btnAtomica.Size = new System.Drawing.Size(75, 23);
             this.btnAtomica.TabIndex = 12;
@@ -162,11 +163,22 @@
             this.btnAtomica.UseVisualStyleBackColor = true;
             this.btnAtomica.Click += new System.EventHandler(this.btnAtomica_Click);
             // 
+            // btnCrearArbol
+            // 
+            this.btnCrearArbol.Location = new System.Drawing.Point(112, 205);
+            this.btnCrearArbol.Name = "btnCrearArbol";
+            this.btnCrearArbol.Size = new System.Drawing.Size(105, 23);
+            this.btnCrearArbol.TabIndex = 13;
+            this.btnCrearArbol.Text = "Crear arbol";
+            this.btnCrearArbol.UseVisualStyleBackColor = true;
+            this.btnCrearArbol.Click += new System.EventHandler(this.btnCrearArbol_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 286);
+            this.ClientSize = new System.Drawing.Size(441, 286);
+            this.Controls.Add(this.btnCrearArbol);
             this.Controls.Add(this.btnAtomica);
             this.Controls.Add(this.btnEncontrarOperadorCentral);
             this.Controls.Add(this.btnQuitarEspacios);
@@ -203,6 +215,7 @@
         private System.Windows.Forms.Button btnQuitarEspacios;
         private System.Windows.Forms.Button btnEncontrarOperadorCentral;
         private System.Windows.Forms.Button btnAtomica;
+        private System.Windows.Forms.Button btnCrearArbol;
     }
 }
 

@@ -22,7 +22,7 @@ namespace AplicacionTestCadenas
         {
             String cadena = txtCadena.Text.Trim();
 
-            txtResultado.Text = Convert.ToString(Arbol.contarCaracteres(cadena));
+            txtResultado.Text = Convert.ToString(ServicioArbolBinario.contarCaracteres(cadena));
         }
 
         private void btnLocalizarCaracter_Click(object sender, EventArgs e)
@@ -30,17 +30,17 @@ namespace AplicacionTestCadenas
             String cadena = txtCadena.Text.Trim();
             String caracter = txtCaracter.Text.Trim();
 
-            txtResultado.Text = Convert.ToString(Arbol.localizarCaracter(cadena,caracter));
+            txtResultado.Text = Convert.ToString(ServicioArbolBinario.localizarCaracter(cadena,caracter));
         }
 
         private void btnQuitarParentesi_Click(object sender, EventArgs e)
         {
             String cadena = txtCadena.Text.Trim();
-            bool tiene = Arbol.hayParentesisExternos(cadena);
+            bool tiene = ServicioArbolBinario.hayParentesisExternos(cadena);
             
             if (tiene)
             {
-                cadena = Arbol.quitarParentesis(cadena);
+                cadena = ServicioArbolBinario.quitarParentesis(cadena);
 
                 txtCadena.Text = cadena;
             }
@@ -50,7 +50,7 @@ namespace AplicacionTestCadenas
         {
             String cadena  = txtCadena.Text.Trim();
 
-            txtCadena.Text = Arbol.quitarEspacios(cadena);
+            txtCadena.Text = ServicioArbolBinario.quitarEspacios(cadena);
 
         }
 
@@ -58,14 +58,16 @@ namespace AplicacionTestCadenas
         {
             String cadena = txtCadena.Text.Trim();
 
-            txtResultado.Text = Arbol.encontrarOperadorPrincipal(cadena);
+            cadena = ServicioArbolBinario.quitarEspacios(cadena);
+
+            txtResultado.Text = Convert.ToString(ServicioArbolBinario.encontrarOperadorPrincipal(cadena));
         }
 
         private void btnAtomica_Click(object sender, EventArgs e)
         {
             String cadena = txtCadena.Text.Trim();
 
-            bool es = Arbol.esAtomica(cadena);
+            bool es = ServicioArbolBinario.esAtomica(cadena);
 
             if (es)
             {
@@ -76,6 +78,27 @@ namespace AplicacionTestCadenas
                 MessageBox.Show("NO es atomica");
             }
 
+        }
+
+        private void btnCrearArbol_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                String cadena = txtCadena.Text;
+                cadena = ServicioArbolBinario.quitarEspacios(cadena);
+                if (ServicioArbolBinario.hayParentesisExternos(cadena))
+                {
+                    cadena = ServicioArbolBinario.quitarParentesis(cadena);
+                }
+                Nodo raiz = new Nodo(cadena);
+                ServicioArbolBinario.setRaiz(raiz);
+                ServicioArbolBinario.agregarArbol(raiz);
+                MessageBox.Show("Se agrego exitosamente el arbol!", "Aviso");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("F");
+            }
         }
     }
 }
