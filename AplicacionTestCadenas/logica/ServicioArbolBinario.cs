@@ -188,150 +188,87 @@ namespace AplicacionTestCadenas.logica
             valor1 = Convert.ToDouble(operacion[0]);
             valor2 = Convert.ToDouble(operacion[2]);
 
-            if (operacion[1] == "+")
+            switch(operacion[1])
             {
-                if (valor1 == 0 && valor2 == 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 == 0 && valor2 != 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 != 0 && valor2 == 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 != 0 && valor2 != 0)
-                {
-                    respuesta = 1;
-                }
+                //Operacion "OR"
+                case "+":
+                    if(valor1 == 0 && valor2 ==0)
+                    {
+                        respuesta = 0;
+                    }
+                    else
+                    {
+                        respuesta = 1;
+                    }
+                //Operacion "AND"
+                case "*":
+                    if(valor1 == 1 && valor2 ==1)
+                    {
+                        respuesta = 1;
+                    }
+                    else
+                    {
+                        respuesta = 0;
+                    }
+                
+                //Operacion "NAND"
+                case "&"
+                    if(valor1 == 1 && valor2 ==1)
+                    {
+                        respuesta = 0;
+                    }
+                    else
+                    {
+                        respuesta = 1;
+                    }
 
-            }
-            else if (operacion[1] == "-")
-            {
-                if (valor1 == 0 && valor2 == 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 == 0 && valor2 != 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 != 0 && valor2 == 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 != 0 && valor2 != 0)
-                {
-                    respuesta = 0;
-                }
+                    //Operacion "Nor"
+                case "&"
+                    if(valor1 == 0 && valor2 ==0)
+                    {
+                        respuesta = 1;
+                    }
+                    else
+                    {
+                        respuesta = 0;
+                    }
 
-            }
-            else if (operacion[1] == "*")
-            {
-                if (valor1 == 0 && valor2 == 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 == 0 && valor2 != 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 != 0 && valor2 == 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 != 0 && valor2 != 0)
-                {
-                    respuesta = 1;
-                }
+                 //Operacion "XOR"
+                case "#"
+                    if((valor1 == 0 && valor2 == 0) || (valor1 == 1 && valor2 == 1) )
+                    {
+                        respuesta = 0;
+                    }
+                    else
+                    {
+                        respuesta = 1;
+                    }
 
-            }
-            else if (operacion[1] == "/")
-            {
+                    //Operacion "XNOR"
+                case "/"
+                    if((valor1 == 0 && valor2 == 0) || (valor1 == 1 && valor2 == 1) )
+                    {
+                        respuesta = 1;
+                    }
+                    else
+                    {
+                        respuesta = 0;
+                    }
 
-                if (valor1 == 0 && valor2 == 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 == 0 && valor2 != 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 != 0 && valor2 == 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 != 0 && valor2 != 0)
-                {
-                    respuesta = 0;
-                }
-
-            }
-            else if (operacion[1] == "^")
-            {
-
-
-                if (valor2 == 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor2 != 0)
-                {
-                    respuesta = 0;
-                }
-
+                    //Operacion "MAT"
+                case "$"
+                    if(((valor1 == 0 && valor2 == 0) || (valor1 == 1 && valor2 == 0)) )
+                    {
+                        respuesta = 1;
+                    }
+                    else
+                    {
+                        respuesta = 0;
+                    }
 
             }
 
-            else if (operacion[1] == "%")
-            {
-                if (valor1 == 0 && valor2 == 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 == 0 && valor2 != 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 != 0 && valor2 == 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 != 0 && valor2 != 0)
-                {
-                    respuesta = 0;
-                }
-
-            }
-            //es un xor negado 
-            else if (operacion[1] == "#")
-            {
-                if (valor1 == 0 && valor2 == 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 == 0 && valor2 != 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 != 0 && valor2 == 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 != 0 && valor2 != 0)
-                {
-                    respuesta = 1;
-                }
-            }
-
-            return respuesta;
         }
-
     }
-
-    /*
-        
-        }*/
+    
 }
