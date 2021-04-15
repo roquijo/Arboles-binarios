@@ -8,7 +8,6 @@ namespace AplicacionTestCadenas.logica
 {
     class ServicioArbolBinario
     {
-
         public static String quitarEspacios(String cadena)
         {
           return  cadena = cadena.Replace(" ", "");
@@ -178,8 +177,8 @@ namespace AplicacionTestCadenas.logica
                     agregarArbol(der);
                 }
             }
-        }asdasd
-            zdasdasdasdasdsadasdasd
+        }
+
         public static double calcularResultado(String[] operacion)
         {
             Double respuesta = 0;
@@ -188,181 +187,132 @@ namespace AplicacionTestCadenas.logica
             valor1 = Convert.ToDouble(operacion[0]);
             valor2 = Convert.ToDouble(operacion[2]);
 
-            if (operacion[1] == "+")
+            switch(operacion[1])
             {
-                if (valor1 == 0 && valor2 == 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 == 0 && valor2 != 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 != 0 && valor2 == 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 != 0 && valor2 != 0)
-                {
-                    respuesta = 1;
-                }
+                //Operacion "OR"
+                case "+":
+                    if(valor1 == 0 && valor2 ==0)
+                    {
+                        respuesta = 0;
+                    }
+                    else
+                    {
+                        respuesta = 1;
+                    }
+                    break;
+                //Operacion "AND"
+                case "*":
+                    if(valor1 == 1 && valor2 ==1)
+                    {
+                        respuesta = 1;
+                    }
+                    else
+                    {
+                        respuesta = 0;
+                    }
+                    break;
+                //Operacion "NAND"
+                case "&":
+                    if(valor1 == 1 && valor2 ==1)
+                    {
+                        respuesta = 0;
+                    }
+                    else
+                    {
+                        respuesta = 1;
+                    }
+                    break;
+                //Operacion "Nor"
+                case "%":
+                    if(valor1 == 0 && valor2 ==0)
+                    {
+                        respuesta = 1;
+                    }
+                    else
+                    {
+                        respuesta = 0;
+                    }
+                    break;
+                //Operacion "XOR"
+                case "#":
+                    if((valor1 == 0 && valor2 == 0) || (valor1 == 1 && valor2 == 1) )
+                    {
+                        respuesta = 0;
+                    }
+                    else
+                    {
+                        respuesta = 1;
+                    }
+                    break;
 
+                //Operacion "XNOR"
+                case "/":
+                    if((valor1 == 0 && valor2 == 0) || (valor1 == 1 && valor2 == 1) )
+                    {
+                        respuesta = 1;
+                    }
+                    else
+                    {
+                        respuesta = 0;
+                    }
+                    break;
+
+                //Operacion "MAT"
+                case "$":
+                    if(((valor1 == 0 && valor2 == 0) || (valor1 == 1 && valor2 == 0)) )
+                    {
+                        respuesta = 1;
+                    }
+                    else
+                    {
+                        respuesta = 0;
+                    }
+                    break;                
             }
-            else if (operacion[1] == "-")
-            {
-                if (valor1 == 0 && valor2 == 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 == 0 && valor2 != 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 != 0 && valor2 == 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 != 0 && valor2 != 0)
-                {
-                    respuesta = 0;
-                }
-
-            }
-            else if (operacion[1] == "*")
-            {
-                if (valor1 == 0 && valor2 == 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 == 0 && valor2 != 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 != 0 && valor2 == 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 != 0 && valor2 != 0)
-                {
-                    respuesta = 1;
-                }
-
-            }
-            else if (operacion[1] == "/")
-            {
-
-                if (valor1 == 0 && valor2 == 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 == 0 && valor2 != 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 != 0 && valor2 == 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 != 0 && valor2 != 0)
-                {
-                    respuesta = 0;
-                }
-
-            }
-            else if (operacion[1] == "^")
-            {
-
-
-                if (valor2 == 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor2 != 0)
-                {
-                    respuesta = 0;
-                }
-
-
-            }
-
-            else if (operacion[1] == "%")
-            {
-                if (valor1 == 0 && valor2 == 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 == 0 && valor2 != 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 != 0 && valor2 == 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 != 0 && valor2 != 0)
-                {
-                    respuesta = 0;
-                }
-
-            }
-            //es un xor negado 
-            else if (operacion[1] == "#")
-            {
-                if (valor1 == 0 && valor2 == 0)
-                {
-                    respuesta = 1;
-                }
-                if (valor1 == 0 && valor2 != 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 != 0 && valor2 == 0)
-                {
-                    respuesta = 0;
-                }
-                if (valor1 != 0 && valor2 != 0)
-                {
-                    respuesta = 1;
-                }
-            }
-
             return respuesta;
+        }
+        public static Boolean verificarChar(String operador)
+        {
+            if (operador == "+" || operador == "-" || operador == "*" || operador == "/" || operador == "^" || operador == "%" || operador == "#")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public static void calculaResultadoArbol(Nodo actual)
         {
-            if (verificarChar(actual.getDatos()) && verificarChar(actual.getIzqr().getDatos()))
+            if (verificarChar(actual.getDatos()) && verificarChar(actual.getIzq().getDatos()))
             {
-                calculaResultadoArbol(actual.getIzqr());
+                calculaResultadoArbol(actual.getIzq());
             }
             else
             {
 
-                if (verificarChar(actual.getDerch().getDatos()))
+                if (verificarChar(actual.getDer().getDatos()))
                 {
-                    calculaResultadoArbol(actual.getDerch());
+                    calculaResultadoArbol(actual.getDer());
                 }
                 else
                 {
                     String[] separada;
                     separada = new String[3];
-                    separada[0] = actual.getIzqr().getDatos();
+                    separada[0] = actual.getIzq().getDatos();
                     separada[1] = actual.getDatos();
-                    separada[2] = actual.getDerch().getDatos();
-                    actual.setDerch(null);
-                    actual.setIzqr(null);
+                    separada[2] = actual.getDer().getDatos();
+                    actual.setDer(null);
+                    actual.setIzq(null);
                     actual.setDato(Convert.ToString(calcularResultado(separada)));
                 }
 
             }
-            if (actual.getDerch() != null && actual.getIzqr() != null)
+            if (actual.getDer() != null && actual.getIzq() != null)
             {
                 calculaResultadoArbol(actual);
             }
         }
-
     }
-
-    /*
-        
-        }*/
+    
 }
