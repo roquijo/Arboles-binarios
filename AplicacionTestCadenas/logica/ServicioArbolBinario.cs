@@ -178,8 +178,8 @@ namespace AplicacionTestCadenas.logica
                     agregarArbol(der);
                 }
             }
-        }
-
+        }asdasd
+            zdasdasdasdasdsadasdasd
         public static double calcularResultado(String[] operacion)
         {
             Double respuesta = 0;
@@ -327,6 +327,37 @@ namespace AplicacionTestCadenas.logica
             }
 
             return respuesta;
+        }
+        public static void calculaResultadoArbol(Nodo actual)
+        {
+            if (verificarChar(actual.getDatos()) && verificarChar(actual.getIzqr().getDatos()))
+            {
+                calculaResultadoArbol(actual.getIzqr());
+            }
+            else
+            {
+
+                if (verificarChar(actual.getDerch().getDatos()))
+                {
+                    calculaResultadoArbol(actual.getDerch());
+                }
+                else
+                {
+                    String[] separada;
+                    separada = new String[3];
+                    separada[0] = actual.getIzqr().getDatos();
+                    separada[1] = actual.getDatos();
+                    separada[2] = actual.getDerch().getDatos();
+                    actual.setDerch(null);
+                    actual.setIzqr(null);
+                    actual.setDato(Convert.ToString(calcularResultado(separada)));
+                }
+
+            }
+            if (actual.getDerch() != null && actual.getIzqr() != null)
+            {
+                calculaResultadoArbol(actual);
+            }
         }
 
     }
