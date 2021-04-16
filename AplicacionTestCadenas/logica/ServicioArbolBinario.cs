@@ -268,7 +268,7 @@ namespace AplicacionTestCadenas.logica
         }
         public static Boolean verificarChar(String operador)
         {
-            if (operador == "+" || operador == "-" || operador == "*" || operador == "/" || operador == "^" || operador == "%" || operador == "#")
+            if (operador == "+" || operador == "-" || operador == "*" || operador == "/" || operador == "^" || operador == "%" || operador == "#" || operador == "$")
             {
                 return true;
             }

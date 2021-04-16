@@ -49,6 +49,9 @@ namespace AplicacionTestCadenas
         private void btnEvaluarArbol_Click(object sender, EventArgs e)
         {
            ServicioArbolBinario.calculaResultadoArbol(ServicioArbolBinario.getRaiz());
+            String formula = ServicioArbolBinario.quitarParentesis(txtCadena.Text);
+            txtResultado.Text = ServicioArbolBinario.getRaiz().getDatos();
+
         }
 
         private void btnPreOrden_Click(object sender, EventArgs e)
@@ -65,6 +68,15 @@ namespace AplicacionTestCadenas
         private void btnPosOrden_Click(object sender, EventArgs e)
         {
             txtPosOrden.Text = ServicioArbolBinario.recorrePosOrden(ServicioArbolBinario.getRaiz(), "");
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtCadena.Text = "";
+            txtInOrden.Text = "";
+            txtPosOrden.Text = "";
+            txtPreOrden.Text = "";
+            txtResultado.Text = "";
         }
     }
 }
