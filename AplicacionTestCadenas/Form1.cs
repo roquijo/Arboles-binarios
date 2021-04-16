@@ -18,87 +18,53 @@ namespace AplicacionTestCadenas
             InitializeComponent();
         }
 
-        private void btnContarCarateres_Click(object sender, EventArgs e)
+        private String devolverCadena()
         {
-            String cadena = txtCadena.Text.Trim();
-
-            txtResultado.Text = Convert.ToString(ServicioArbolBinario.contarCaracteres(cadena));
-        }
-
-        private void btnLocalizarCaracter_Click(object sender, EventArgs e)
-        {
-            String cadena = txtCadena.Text.Trim();
-            String caracter = txtCaracter.Text.Trim();
-
-            txtResultado.Text = Convert.ToString(ServicioArbolBinario.localizarCaracter(cadena,caracter));
-        }
-
-        private void btnQuitarParentesi_Click(object sender, EventArgs e)
-        {
-            String cadena = txtCadena.Text.Trim();
-            bool tiene = ServicioArbolBinario.hayParentesisExternos(cadena);
-            
-            if (tiene)
+            String cadena = txtCadena.Text;
+            cadena = ServicioArbolBinario.quitarEspacios(cadena);
+            if (ServicioArbolBinario.hayParentesisExternos(cadena))
             {
                 cadena = ServicioArbolBinario.quitarParentesis(cadena);
-
-                txtCadena.Text = cadena;
             }
-        }
-
-        private void btnQuitarEspacios_Click(object sender, EventArgs e)
-        {
-            String cadena  = txtCadena.Text.Trim();
-
-            txtCadena.Text = ServicioArbolBinario.quitarEspacios(cadena);
-
-        }
-
-        private void btnEncontrarOperadorCentral_Click(object sender, EventArgs e)
-        {
-            String cadena = txtCadena.Text.Trim();
-
-            cadena = ServicioArbolBinario.quitarEspacios(cadena);
-
-            txtResultado.Text = Convert.ToString(ServicioArbolBinario.encontrarOperadorPrincipal(cadena));
-        }
-
-        private void btnAtomica_Click(object sender, EventArgs e)
-        {
-            String cadena = txtCadena.Text.Trim();
-
-            bool es = ServicioArbolBinario.esAtomica(cadena);
-
-            if (es)
-            {
-                MessageBox.Show("Es atomica");
-            }
-            else
-            {
-                MessageBox.Show("NO es atomica");
-            }
-
+            return cadena;
         }
 
         private void btnCrearArbol_Click(object sender, EventArgs e)
         {
             try
             {
-                String cadena = txtCadena.Text;
-                cadena = ServicioArbolBinario.quitarEspacios(cadena);
-                if (ServicioArbolBinario.hayParentesisExternos(cadena))
-                {
-                    cadena = ServicioArbolBinario.quitarParentesis(cadena);
-                }
-                Nodo raiz = new Nodo(cadena);
+                Nodo raiz = new Nodo(devolverCadena());
                 ServicioArbolBinario.setRaiz(raiz);
                 ServicioArbolBinario.agregarArbol(raiz);
-                MessageBox.Show("Se agrego exitosamente el arbol!", "Aviso");
+                MessageBox.Show("Se agrego exitosamente el arbol!");
             }
-            catch (Exception)
+            catch(Exception ex)
             {
-                MessageBox.Show("F");
+                MessageBox.Show(ex.Message);
+
+               // MessageBox.Show("Error al agregar el arbol");
             }
+        }
+
+        private void btnEvaluarArbol_Click(object sender, EventArgs e)
+        {
+           ServicioArbolBinario.calculaResultadoArbol(ServicioArbolBinario.getRaiz());
+        }
+
+        private void btnPreOrden_Click(object sender, EventArgs e)
+        {
+           txtPreOrden.Text = ServicioArbolBinario.recorrePreOrden(ServicioArbolBinario.getRaiz(), "");
+
+        }
+
+        private void btnInOrden_Click(object sender, EventArgs e)
+        {
+            txtInOrden.Text = ServicioArbolBinario.recorreInOrden(ServicioArbolBinario.getRaiz(),"" );
+        }
+
+        private void btnPosOrden_Click(object sender, EventArgs e)
+        {
+            txtPosOrden.Text = ServicioArbolBinario.recorrePosOrden(ServicioArbolBinario.getRaiz(), "");
         }
     }
 }

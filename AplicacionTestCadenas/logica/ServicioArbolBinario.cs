@@ -57,6 +57,11 @@ namespace AplicacionTestCadenas.logica
 
         public static String[] darCadenaSeparada(String cadena, int posicion)
         {
+            if (hayParentesisExternos(cadena))
+            {
+                cadena = quitarParentesis(cadena);
+            }
+
             String[] separada;
             separada = new String[3];
 
@@ -77,24 +82,25 @@ namespace AplicacionTestCadenas.logica
         {
             int cont = 0;
             int cuantos = 0;
-
-            foreach (char c in cadena)
+            if(cadena.Length > 1)
             {
-                if (c == '(')
+                foreach (char c in cadena)
                 {
-                    cont = cont + 1;
-                }
-                else if (c == ')')
-                {
-                    cont = cont - 1;
-                }
+                    if (c == '(')
+                    {
+                        cont = cont + 1;
+                    }
+                    else if (c == ')')
+                    {
+                        cont = cont - 1;
+                    }
 
-                if (cont == 0)
-                {
-                    cuantos++;
+                    if (cont == 0)
+                    {
+                        cuantos++;
+                    }
                 }
             }
-
             if (cuantos == 1)
             {
                 return true;
@@ -103,16 +109,6 @@ namespace AplicacionTestCadenas.logica
             {
                 return false;
             }
-        }
-
-        public static int contarCaracteres(String cadena)
-        {
-            return cadena.Length;
-        }
-
-        public static int localizarCaracter(String cadena, String caracter)
-        {
-            return cadena.IndexOf(caracter);
         }
 
         public static bool esAtomica(String cadena)
@@ -150,10 +146,9 @@ namespace AplicacionTestCadenas.logica
 
         public static void agregarArbol(Nodo actual)
         {
-            if (hayParentesisExternos(actual.getDatos()))
+           
+            if (esAtomica(actual.getDatos()))
             {
-                if (esAtomica(actual.getDatos()))
-                {
 
                     int operacionCentro = encontrarOperadorPrincipal(actual.getDatos());
                     String[] cadena = darCadenaSeparada(actual.getDatos(), operacionCentro);
@@ -162,10 +157,9 @@ namespace AplicacionTestCadenas.logica
                     Nodo der = new Nodo(cadena[2]);
                     actual.setIzq(izq);
                     actual.setDer(der);
-                }
-                else
-                {
-                    actual.setDato(quitarParentesis(actual.getDatos()));
+            }
+            else
+            {                    
                     int operadorcentral = encontrarOperadorPrincipal(actual.getDatos());
                     String[] cadenas = darCadenaSeparada(actual.getDatos(), operadorcentral);
                     Nodo izq = new Nodo(cadenas[0]);
@@ -175,9 +169,10 @@ namespace AplicacionTestCadenas.logica
                     actual.setDer(der);
                     agregarArbol(izq);
                     agregarArbol(der);
-                }
             }
         }
+        
+     
 
         public static double calcularResultado(String[] operacion)
         {
@@ -189,6 +184,17 @@ namespace AplicacionTestCadenas.logica
 
             switch(operacion[1])
             {
+                //Operacion "AND"
+                case "*":
+                    if (valor1 == 1 && valor2 == 1)
+                    {
+                        respuesta = 1;
+                    }
+                    else
+                    {
+                        respuesta = 0;
+                    }
+                    break;
                 //Operacion "OR"
                 case "+":
                     if(valor1 == 0 && valor2 ==0)
@@ -200,17 +206,7 @@ namespace AplicacionTestCadenas.logica
                         respuesta = 1;
                     }
                     break;
-                //Operacion "AND"
-                case "*":
-                    if(valor1 == 1 && valor2 ==1)
-                    {
-                        respuesta = 1;
-                    }
-                    else
-                    {
-                        respuesta = 0;
-                    }
-                    break;
+               
                 //Operacion "NAND"
                 case "&":
                     if(valor1 == 1 && valor2 ==1)
@@ -256,7 +252,6 @@ namespace AplicacionTestCadenas.logica
                         respuesta = 0;
                     }
                     break;
-
                 //Operacion "MAT"
                 case "$":
                     if(((valor1 == 0 && valor2 == 0) || (valor1 == 1 && valor2 == 0)) )
@@ -306,13 +301,73 @@ namespace AplicacionTestCadenas.logica
                     actual.setIzq(null);
                     actual.setDato(Convert.ToString(calcularResultado(separada)));
                 }
-
             }
             if (actual.getDer() != null && actual.getIzq() != null)
             {
                 calculaResultadoArbol(actual);
             }
         }
-    }
+
+        public static String recorrePreOrden(Nodo actual, string cad)
+        {
+            if (actual == null)
+            {
+                return cad;
+            }
+            if (esAtomica(actual.getDatos()))
+            {
+                if (hayParentesisExternos(actual.getDatos()))
+                {
+                    quitarParentesis(actual.getDatos());
+                }
+            }
+           
+            cad = cad + actual.getDatos() + ",";
+            cad = recorrePreOrden(actual.getIzq(), cad);
+            cad = recorrePreOrden(actual.getDer(), cad);
+
+            return cad;
+        }
     
+        public static String recorreInOrden(Nodo actual, String cad)
+        {
+            if (actual == null)
+            {
+                return cad;
+            }
+            if (esAtomica(actual.getDatos()))
+            {
+                if (hayParentesisExternos(actual.getDatos()))
+                {
+                    quitarParentesis(actual.getDatos());
+                }
+            }
+
+            cad = recorreInOrden(actual.getIzq(), cad);
+            cad = cad + actual.getDatos() + ",";
+            cad = recorreInOrden(actual.getDer(), cad);
+
+            return cad;
+        }
+        
+        public static String recorrePosOrden(Nodo actual, String cad)
+        {
+            if (actual == null)
+            {
+                return cad;
+            }
+            if (esAtomica(actual.getDatos()))
+            {
+                if (hayParentesisExternos(actual.getDatos()))
+                {
+                    quitarParentesis(actual.getDatos());
+                }
+            }
+            cad = recorrePosOrden(actual.getIzq(), cad);
+            cad = recorrePosOrden(actual.getDer(), cad);
+            cad = cad + actual.getDatos() + ",";
+
+            return cad;
+        }
+    }
 }
