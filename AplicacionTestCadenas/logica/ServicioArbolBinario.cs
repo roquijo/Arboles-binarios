@@ -268,7 +268,7 @@ namespace AplicacionTestCadenas.logica
         }
         public static Boolean verificarChar(String operador)
         {
-            if (operador == "+" || operador == "-" || operador == "*" || operador == "/" || operador == "^" || operador == "%" || operador == "#" || operador == "$")
+            if (operador == "*" || operador == "+" || operador == "&" || operador == "%" || operador == "#" || operador == "/" || operador == "$")
             {
                 return true;
             }
@@ -283,15 +283,22 @@ namespace AplicacionTestCadenas.logica
             {
                 calculaResultadoArbol(actual.getIzq());
             }
+            if (verificarChar(actual.getDatos()) && verificarChar(actual.getDer().getDatos()))
+            {
+                calculaResultadoArbol(actual.getDer());
+            }
+            if (verificarChar(actual.getDer().getDatos()))
+            {
+                calculaResultadoArbol(actual.getDer());
+            }
+            if (verificarChar(actual.getIzq().getDatos()))
+            {
+                calculaResultadoArbol(actual.getIzq());
+            }
             else
             {
-
-                if (verificarChar(actual.getDer().getDatos()))
-                {
-                    calculaResultadoArbol(actual.getDer());
-                }
-                else
-                {
+                
+                
                     String[] separada;
                     separada = new String[3];
                     separada[0] = actual.getIzq().getDatos();
@@ -300,7 +307,7 @@ namespace AplicacionTestCadenas.logica
                     actual.setDer(null);
                     actual.setIzq(null);
                     actual.setDato(Convert.ToString(calcularResultado(separada)));
-                }
+                
             }
             if (actual.getDer() != null && actual.getIzq() != null)
             {
