@@ -91,6 +91,7 @@ namespace AplicacionTestCadenas.logica
         {
             int cont = 0;
             int cuantos = 0;
+            bool hay;
             if(cadena.Length > 1)
             {
                 foreach (char c in cadena)
@@ -110,14 +111,10 @@ namespace AplicacionTestCadenas.logica
                     }
                 }
             }
-            if (cuantos == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+
+            hay = (cuantos == 1) ? true : false;
+
+            return hay;
         }
 
         public static bool esAtomica(String cadena)
@@ -145,10 +142,8 @@ namespace AplicacionTestCadenas.logica
                         break;
                 }
             }
-                if (contador == 1)
-                {
-                    centinela = true;
-                }
+
+                centinela = (contador == 1) ? true:centinela;
 
                 return centinela;
         }
@@ -198,82 +193,47 @@ namespace AplicacionTestCadenas.logica
             {
                 //Operacion "AND"
                 case "*":
-                    if (valor1 == 1 && valor2 == 1)
-                    {
-                        respuesta = 1;
-                    }
-                    else
-                    {
-                        respuesta = 0;
-                    }
+
+                    respuesta = (valor1 == 1 && valor2 == 1)?1:0;
+
                     break;
                 //Operacion "OR"
                 case "+":
-                    if(valor1 == 0 && valor2 ==0)
-                    {
-                        respuesta = 0;
-                    }
-                    else
-                    {
-                        respuesta = 1;
-                    }
+
+                    respuesta = (valor1 == 0 && valor2 == 0) ? 0 : 1;
+
                     break;
                
                 //Operacion "NAND"
                 case "&":
-                    if(valor1 == 1 && valor2 ==1)
-                    {
-                        respuesta = 0;
-                    }
-                    else
-                    {
-                        respuesta = 1;
-                    }
+
+                    respuesta = (valor1 == 1 && valor2 == 1) ? 0 : 1;
+                    
                     break;
                 //Operacion "Nor"
                 case "%":
-                    if(valor1 == 0 && valor2 ==0)
-                    {
-                        respuesta = 1;
-                    }
-                    else
-                    {
-                        respuesta = 0;
-                    }
+
+                    respuesta = (valor1 == 0 && valor2 == 0) ? 1: 0;
+                    
                     break;
                 //Operacion "XOR"
                 case "#":
-                    if((valor1 == 0 && valor2 == 0) || (valor1 == 1 && valor2 == 1) )
-                    {
-                        respuesta = 0;
-                    }
-                    else
-                    {
-                        respuesta = 1;
-                    }
+
+                    respuesta = ((valor1 == 0 && valor2 == 0) || (valor1 == 1 && valor2 == 1)) ? 0 : 1;
+                   
                     break;
 
                 //Operacion "XNOR"
                 case "/":
-                    if((valor1 == 0 && valor2 == 0) || (valor1 == 1 && valor2 == 1) )
-                    {
-                        respuesta = 1;
-                    }
-                    else
-                    {
-                        respuesta = 0;
-                    }
+
+                    respuesta = ((valor1 == 0 && valor2 == 0) || (valor1 == 1 && valor2 == 1)) ? 1 : 0;
+                   
                     break;
                 //Operacion "MAT"
                 case "$":
-                    if(((valor1 == 0 && valor2 == 0) || (valor1 == 1 && valor2 == 0)) )
-                    {
-                        respuesta = 1;
-                    }
-                    else
-                    {
-                        respuesta = 0;
-                    }
+
+                    respuesta = ((valor1 == 0 && valor2 == 0) || (valor1 == 1 && valor2 == 0)) ? 1 : 0;
+                    
                     break;                
             }
             return respuesta;
