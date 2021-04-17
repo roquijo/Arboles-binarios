@@ -77,6 +77,7 @@ namespace AplicacionTestCadenas
             txtPosOrden.Text = "";
             txtPreOrden.Text = "";
             txtResultado.Text = "";
+            txtCadena.Focus();
         }
     }
 }

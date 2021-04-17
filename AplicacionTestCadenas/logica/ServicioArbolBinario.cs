@@ -57,19 +57,28 @@ namespace AplicacionTestCadenas.logica
 
         public static String[] darCadenaSeparada(String cadena, int posicion)
         {
-            if (hayParentesisExternos(cadena))
-            {
-                cadena = quitarParentesis(cadena);
-            }
-
             String[] separada;
             separada = new String[3];
 
+           
+            if (hayParentesisExternos(cadena))
+            {
+                    cadena = quitarParentesis(cadena);
+            }
+               
+
+            if(cadena.Length == posicion)
+            {
+                separada[0] = null;
+                separada[1] = cadena.Substring(0, posicion);
+                separada[2] = null;
+                return separada;
+            }
             separada[0] = cadena.Substring(0, posicion);
             separada[1] = Convert.ToString(cadena[posicion]);
             separada[2] = cadena.Substring(posicion + 1);
-
-            return separada;
+            
+                return separada;            
         }
 
         public static String quitarParentesis(String pCadena)
@@ -159,9 +168,14 @@ namespace AplicacionTestCadenas.logica
                     actual.setDer(der);
             }
             else
-            {                    
+            {           
+                
                     int operadorcentral = encontrarOperadorPrincipal(actual.getDatos());
                     String[] cadenas = darCadenaSeparada(actual.getDatos(), operadorcentral);
+                    if (cadenas[0] == null || cadenas[1] == null)
+                    {
+                        return;
+                    }
                     Nodo izq = new Nodo(cadenas[0]);
                     actual.setDato(cadenas[1]);
                     Nodo der = new Nodo(cadenas[2]);
@@ -286,15 +300,7 @@ namespace AplicacionTestCadenas.logica
             if (verificarChar(actual.getDatos()) && verificarChar(actual.getDer().getDatos()))
             {
                 calculaResultadoArbol(actual.getDer());
-            }
-            if (verificarChar(actual.getDer().getDatos()))
-            {
-                calculaResultadoArbol(actual.getDer());
-            }
-            if (verificarChar(actual.getIzq().getDatos()))
-            {
-                calculaResultadoArbol(actual.getIzq());
-            }
+            }          
             else
             {
                 

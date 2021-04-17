@@ -61,7 +61,7 @@
             this.txtCadena.Name = "txtCadena";
             this.txtCadena.Size = new System.Drawing.Size(343, 20);
             this.txtCadena.TabIndex = 1;
-            this.txtCadena.Text = "(1+1)*(1/0)";
+            this.txtCadena.Text = "(((0&0)*(0%1)) + 0)";
             // 
             // txtResultado
             // 
