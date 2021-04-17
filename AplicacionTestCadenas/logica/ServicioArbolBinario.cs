@@ -15,11 +15,11 @@ namespace AplicacionTestCadenas.logica
 
         private static Nodo raiz;
 
-
         public static Nodo getRaiz()
         {
             return raiz;
         }
+
         public static void setRaiz(Nodo pRaiz)
         {
             raiz = pRaiz;
@@ -151,7 +151,7 @@ namespace AplicacionTestCadenas.logica
                 }
 
                 return centinela;
-            }
+        }
 
         public static void agregarArbol(Nodo actual)
         {
@@ -185,8 +185,6 @@ namespace AplicacionTestCadenas.logica
                     agregarArbol(der);
             }
         }
-        
-     
 
         public static double calcularResultado(String[] operacion)
         {
@@ -280,6 +278,7 @@ namespace AplicacionTestCadenas.logica
             }
             return respuesta;
         }
+
         public static Boolean verificarChar(String operador)
         {
             if (operador == "*" || operador == "+" || operador == "&" || operador == "%" || operador == "#" || operador == "/" || operador == "$")
@@ -291,6 +290,7 @@ namespace AplicacionTestCadenas.logica
                 return false;
             }
         }
+
         public static void calculaResultadoArbol(Nodo actual)
         {
             if (verificarChar(actual.getDatos()) && verificarChar(actual.getIzq().getDatos()))
@@ -302,9 +302,7 @@ namespace AplicacionTestCadenas.logica
                 calculaResultadoArbol(actual.getDer());
             }          
             else
-            {
-                
-                
+            {           
                     String[] separada;
                     separada = new String[3];
                     separada[0] = actual.getIzq().getDatos();
@@ -333,8 +331,7 @@ namespace AplicacionTestCadenas.logica
                 {
                     quitarParentesis(actual.getDatos());
                 }
-            }
-           
+            }          
             cad = cad + actual.getDatos() + ",";
             cad = recorrePreOrden(actual.getIzq(), cad);
             cad = recorrePreOrden(actual.getDer(), cad);
