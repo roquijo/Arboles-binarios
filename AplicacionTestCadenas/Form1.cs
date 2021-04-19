@@ -79,5 +79,13 @@ namespace AplicacionTestCadenas
             txtResultado.Text = "";
             txtCadena.Focus();
         }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Aplicacion desarrollada por: \n" +
+                "Juan Pablo Meneses - 2220191009 \n" +
+                "Juan Esteban Gomez - 2220191007 \n" +
+                "Jorge Eliecer Rojas - 2220191003");
+        }
     }
 }
