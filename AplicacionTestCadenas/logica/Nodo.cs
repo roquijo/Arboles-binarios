@@ -63,7 +63,7 @@ namespace AplicacionTestCadenas.logica
             return raiz;
         }
 
-        public static int darNodosCompletos(Nodo pNodo)
+        public static int darTodoNodos(Nodo pNodo)
         {
             if (pNodo == null)
             {
@@ -73,9 +73,9 @@ namespace AplicacionTestCadenas.logica
             {
                 if (pNodo.getIzq() != null && pNodo.getDer() != null)
                 {
-                    return darNodosCompletos(pNodo.getIzq()) + darNodosCompletos(pNodo.getDer()) + 1;
+                    return darTodoNodos(pNodo.getIzq()) + darTodoNodos(pNodo.getDer()) + 1;
                 }
-                return darNodosCompletos(pNodo.getIzq()) + darNodosCompletos(pNodo.getDer());
+                return darTodoNodos(pNodo.getIzq()) + darTodoNodos(pNodo.getDer());
             }
         }
     }

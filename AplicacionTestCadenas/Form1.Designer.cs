@@ -85,9 +85,9 @@
             // 
             // btnCrearArbol
             // 
-            this.btnCrearArbol.Location = new System.Drawing.Point(174, 77);
+            this.btnCrearArbol.Location = new System.Drawing.Point(91, 75);
             this.btnCrearArbol.Name = "btnCrearArbol";
-            this.btnCrearArbol.Size = new System.Drawing.Size(105, 23);
+            this.btnCrearArbol.Size = new System.Drawing.Size(143, 23);
             this.btnCrearArbol.TabIndex = 13;
             this.btnCrearArbol.Text = "Crear arbol";
             this.btnCrearArbol.UseVisualStyleBackColor = true;
@@ -184,7 +184,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(80, 301);
+            this.btnLimpiar.Location = new System.Drawing.Point(188, 301);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(105, 23);
             this.btnLimpiar.TabIndex = 24;
@@ -219,9 +219,9 @@
             // 
             // btnGraficar
             // 
-            this.btnGraficar.Location = new System.Drawing.Point(327, 301);
+            this.btnGraficar.Location = new System.Drawing.Point(253, 75);
             this.btnGraficar.Name = "btnGraficar";
-            this.btnGraficar.Size = new System.Drawing.Size(96, 23);
+            this.btnGraficar.Size = new System.Drawing.Size(143, 23);
             this.btnGraficar.TabIndex = 26;
             this.btnGraficar.Text = "Graficar Arbol";
             this.btnGraficar.UseVisualStyleBackColor = true;

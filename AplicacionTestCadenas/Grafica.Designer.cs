@@ -35,7 +35,9 @@ namespace AplicacionTestCadenas
             // 
             // lienzo
             // 
+            this.lienzo.AutoSize = true;
             this.lienzo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lienzo.Enabled = false;
             this.lienzo.Location = new System.Drawing.Point(12, 12);
             this.lienzo.Name = "lienzo";
             this.lienzo.Size = new System.Drawing.Size(978, 443);
@@ -62,6 +64,7 @@ namespace AplicacionTestCadenas
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Graficar Arbol";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
