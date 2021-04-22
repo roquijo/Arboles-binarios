@@ -49,7 +49,7 @@ namespace AplicacionTestCadenas
             for (int i = 1; i < nodos.Length-1; i++)
             {
 
-                g.DrawLine(p, mitadAnchoDer , 50, anchosIguales+20, altosIguales);
+                g.DrawLine(p, anchosIguales , 50, anchosIguales+20, altosIguales);
                 g.DrawEllipse(p, anchosIguales-20, altosIguales-20, 40, 40);
                 g.DrawString(nodos[i], this.Font, b, anchosIguales - 5, altosIguales - 8);
                 anchosIguales += cuantoAncho;
@@ -67,7 +67,7 @@ namespace AplicacionTestCadenas
 
         public static void dibujarRecursivoDer()
         {
-
+            
         }
     }
 }
