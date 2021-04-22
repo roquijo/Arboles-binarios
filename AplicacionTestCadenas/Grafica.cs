@@ -20,54 +20,86 @@ namespace AplicacionTestCadenas
 
         private void btnGraficar_Click(object sender, EventArgs e)
         {
-
-            int ancho = 0, alto = 0, mitadAnchoDer, mitadAlto,anchosIguales,altosIguales,cuantoAncho, cuantoAlto;
-            Graphics g;
-            Brush b;
-            Pen p;
-
-            b = new SolidBrush(this.ForeColor);
-            g = lienzo.CreateGraphics();
-            p = new Pen(Color.Black, 1);
-            ancho = lienzo.Width;
-            alto = lienzo.Height;
-
-            mitadAnchoDer = ancho / 2;
-            mitadAlto = alto / 2;
-
-            String[] nodos = ServicioArbolBinario.darNodos();
-
-            g.DrawEllipse(p, mitadAnchoDer - 20, 10, 40, 40);
-            g.DrawString(nodos[0], this.Font, b, mitadAnchoDer - 5, 20);
-
-            cuantoAncho = ancho / (nodos.Length - 1);
-            cuantoAlto = alto / (nodos.Length - 1);
-
-            anchosIguales = cuantoAncho;
-            altosIguales = cuantoAlto;
-
-            for (int i = 1; i < nodos.Length-1; i++)
-            {
-
-                g.DrawLine(p, anchosIguales , 50, anchosIguales+20, altosIguales);
-                g.DrawEllipse(p, anchosIguales-20, altosIguales-20, 40, 40);
-                g.DrawString(nodos[i], this.Font, b, anchosIguales - 5, altosIguales - 8);
-                anchosIguales += cuantoAncho;
-
-                if(i+1 < nodos.Length - 2)
-                {
-                    g.DrawEllipse(p, anchosIguales - 20, altosIguales - 20, 40, 40);
-                    g.DrawString(nodos[i + 1], this.Font, b, anchosIguales - 5, altosIguales - 8);
-                    anchosIguales += cuantoAncho;
-                    altosIguales += cuantoAlto;
-                }
-                
-            }
+            Graphics grafica = lienzo.CreateGraphics();
+            mostrarArbol(grafica, lienzo.Width / 2, 20, ServicioArbolBinario.getRaiz());
         }
 
-        public static void dibujarRecursivoDer()
+        public const int DIAMETRO = 30;
+        public const int RADIO = DIAMETRO / 2;
+        public const int ANCHO = 50;
+       
+
+        private void mostrarArbol(Graphics pGrafica, int x, int y, Nodo pNodo)
         {
-            
+            Pen p = new Pen(Color.Black);
+            Brush b = new SolidBrush(this.ForeColor);
+
+
+            if (pNodo == null)
+            {
+
+            }
+            else
+            {
+                int anchoSeparacion = Nodo.darNodosCompletos(pNodo) * (ANCHO / 2);
+
+                String cadena = pNodo.getDatos();
+                switch (cadena)
+                {
+
+                    case "*":
+                        
+                        pGrafica.DrawEllipse(p, x - 10, y - 20, DIAMETRO + RADIO, DIAMETRO + RADIO);
+                        pGrafica.DrawString(pNodo.getDatos(), this.Font, b, x + 6, y - 6);
+                        break;
+                    case "+":
+                       
+                        pGrafica.DrawEllipse(p, x - 10, y - 20, DIAMETRO + RADIO, DIAMETRO + RADIO);
+                        pGrafica.DrawString(pNodo.getDatos(), this.Font, b, x + 6, y-6);
+
+                        break;
+                    case "&":
+                       
+                        pGrafica.DrawEllipse(p, x - 10, y - 20, DIAMETRO + RADIO, DIAMETRO + RADIO);
+                        pGrafica.DrawString(pNodo.getDatos(), this.Font, b, x + 6, y - 6);
+                        break;
+                    case "%":
+                        
+                        pGrafica.DrawEllipse(p, x - 10, y - 20, DIAMETRO + RADIO, DIAMETRO + RADIO);
+                        pGrafica.DrawString(pNodo.getDatos(), this.Font, b, x + 6, y - 6);
+                        break;
+                    case "#":
+                        
+                        pGrafica.DrawEllipse(p, x - 10, y - 20, DIAMETRO + RADIO, DIAMETRO + RADIO);
+                        pGrafica.DrawString(pNodo.getDatos(), this.Font, b, x + 6, y - 6);
+                        break;
+                    case "/":
+                        
+                        pGrafica.DrawEllipse(p, x - 10, y - 20, DIAMETRO + RADIO, DIAMETRO + RADIO);
+                        pGrafica.DrawString(pNodo.getDatos(), this.Font, b, x + 6, y - 6);
+                        break;
+                    case "$":
+                        
+                        pGrafica.DrawEllipse(p, x - 10, y - 20, DIAMETRO + RADIO, DIAMETRO + RADIO);
+                        pGrafica.DrawString(pNodo.getDatos(), this.Font, b, x + 6, y - 6);
+                        break;
+                    default:
+                        pGrafica.DrawEllipse(p, x, y, DIAMETRO, DIAMETRO);
+                        pGrafica.DrawString(pNodo.getDatos(), this.Font, b, x + 10, y + 8);
+                        break;
+                }
+
+                if (pNodo.getIzq() != null)
+                {
+                    pGrafica.DrawLine(p, x-10, y+2, x - ANCHO - anchoSeparacion + RADIO, y + ANCHO);
+                }
+                if (pNodo.getDer() != null)
+                {
+                    pGrafica.DrawLine(p, x + 35, y + 2, x + ANCHO + anchoSeparacion + RADIO, y + ANCHO);
+                }
+                mostrarArbol(pGrafica, x - ANCHO - anchoSeparacion, y + ANCHO, pNodo.getIzq());
+                mostrarArbol(pGrafica, x + ANCHO + anchoSeparacion, y + ANCHO, pNodo.getDer());
+            }
         }
     }
 }
