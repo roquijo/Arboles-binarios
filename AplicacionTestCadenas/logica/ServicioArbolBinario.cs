@@ -15,6 +15,18 @@ namespace AplicacionTestCadenas.logica
 
         private static Nodo raiz;
 
+        public static String cadenaPreOrden ="";
+
+        public static void setCadenaPreOrden(String cad)
+        {
+            cadenaPreOrden = cad;
+        }
+
+        public static String getCadenaPreOrden()
+        {
+            return cadenaPreOrden;
+        }
+
         public static Nodo getRaiz()
         {
             return raiz;
@@ -239,7 +251,7 @@ namespace AplicacionTestCadenas.logica
             return respuesta;
         }
 
-        public static Boolean verificarChar(String operador)
+        public static Boolean verificarOperador(String operador)
         {
             if (operador == "*" || operador == "+" || operador == "&" || operador == "%" || operador == "#" || operador == "/" || operador == "$")
             {
@@ -253,11 +265,11 @@ namespace AplicacionTestCadenas.logica
 
         public static void calculaResultadoArbol(Nodo actual)
         {
-            if (verificarChar(actual.getDatos()) && verificarChar(actual.getIzq().getDatos()))
+            if (verificarOperador(actual.getDatos()) && verificarOperador(actual.getIzq().getDatos()))
             {
                 calculaResultadoArbol(actual.getIzq());
             }
-            if (verificarChar(actual.getDatos()) && verificarChar(actual.getDer().getDatos()))
+            if (verificarOperador(actual.getDatos()) && verificarOperador(actual.getDer().getDatos()))
             {
                 calculaResultadoArbol(actual.getDer());
             }          
@@ -277,6 +289,12 @@ namespace AplicacionTestCadenas.logica
             {
                 calculaResultadoArbol(actual);
             }
+        }
+        public static string[] darNodos()
+        {
+            String[] nodos = cadenaPreOrden.Split(',');
+
+            return nodos;
         }
 
         public static String recorrePreOrden(Nodo actual, string cad)

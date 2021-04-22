@@ -87,5 +87,12 @@ namespace AplicacionTestCadenas
                 "Juan Esteban Gomez - 2220191007 \n" +
                 "Jorge Eliecer Rojas - 2220191003");
         }
+
+        private void btnGraficar_Click(object sender, EventArgs e)
+        {
+            ServicioArbolBinario.setCadenaPreOrden(txtPreOrden.Text);
+            Grafica graficar = new Grafica();
+            graficar.Show();
+        }
     }
 }

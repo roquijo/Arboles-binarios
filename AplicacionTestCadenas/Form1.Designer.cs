@@ -47,6 +47,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnGraficar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,6 +139,7 @@
             this.txtPreOrden.Name = "txtPreOrden";
             this.txtPreOrden.Size = new System.Drawing.Size(241, 20);
             this.txtPreOrden.TabIndex = 18;
+            this.txtPreOrden.Text = "+,1,1,";
             // 
             // txtInOrden
             // 
@@ -182,7 +184,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(174, 301);
+            this.btnLimpiar.Location = new System.Drawing.Point(80, 301);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(105, 23);
             this.btnLimpiar.TabIndex = 24;
@@ -211,15 +213,26 @@
             // acercaDeToolStripMenuItem
             // 
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.acercaDeToolStripMenuItem.Text = "Acerca de...";
             this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
+            // 
+            // btnGraficar
+            // 
+            this.btnGraficar.Location = new System.Drawing.Point(327, 301);
+            this.btnGraficar.Name = "btnGraficar";
+            this.btnGraficar.Size = new System.Drawing.Size(96, 23);
+            this.btnGraficar.TabIndex = 26;
+            this.btnGraficar.Text = "Graficar Arbol";
+            this.btnGraficar.UseVisualStyleBackColor = true;
+            this.btnGraficar.Click += new System.EventHandler(this.btnGraficar_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 336);
+            this.Controls.Add(this.btnGraficar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -270,6 +283,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
+        private System.Windows.Forms.Button btnGraficar;
     }
 }
 
