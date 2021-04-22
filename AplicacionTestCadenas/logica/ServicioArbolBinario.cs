@@ -13,6 +13,7 @@ namespace AplicacionTestCadenas.logica
           return  cadena = cadena.Replace(" ", "");
         }
 
+
         private static Nodo raiz;
 
         public static String cadenaPreOrden ="";
