@@ -21,13 +21,13 @@ namespace AplicacionTestCadenas
         }
 
         public const int DIAMETRO_ELIPSE = 30;
-        public const int ANCHO = 80;
+        public const int ANCHO = 100;
         public const int RADIO = DIAMETRO_ELIPSE / 2;
         public const int MEDIDA_ELIPSE = DIAMETRO_ELIPSE + RADIO;
-        public const int TAM_HORIZONTAL = 4000;
+        public const int TAM_HORIZONTAL = 6000;
         public const int TAM_VERTICAL = 2000;
        
-        private Image[] imagenes = new Image[2];
+        private Image[] imagenes = new Image[7];
         
 
         private void btnGraficar_Click(object sender, EventArgs e)
