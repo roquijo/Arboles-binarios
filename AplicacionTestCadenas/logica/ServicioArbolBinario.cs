@@ -15,18 +15,7 @@ namespace AplicacionTestCadenas.logica
 
 
         private static Nodo raiz;
-
-        public static String cadenaPreOrden ="";
-
-        public static void setCadenaPreOrden(String cad)
-        {
-            cadenaPreOrden = cad;
-        }
-
-        public static String getCadenaPreOrden()
-        {
-            return cadenaPreOrden;
-        }
+      
 
         public static Nodo getRaiz()
         {
@@ -306,11 +295,11 @@ namespace AplicacionTestCadenas.logica
                 calculaResultadoArbol(actual);
             }
         }
-        public static string[] darNodos()
+        public static int darNodos()
         {
-            String[] nodos = cadenaPreOrden.Split(',');
+            String[] nodos = recorrePreOrden(getRaiz(),"").Split(',');
 
-            return nodos;
+            return nodos.Length-1;
         }
 
         public static String recorrePreOrden(Nodo actual, string cad)

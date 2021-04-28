@@ -77,6 +77,7 @@ namespace AplicacionTestCadenas
             txtPosOrden.Text = "";
             txtPreOrden.Text = "";
             txtResultado.Text = "";
+            txtNumNodos.Text = "";
             txtCadena.Focus();
         }
 
@@ -90,9 +91,16 @@ namespace AplicacionTestCadenas
 
         private void btnGraficar_Click(object sender, EventArgs e)
         {
-            ServicioArbolBinario.setCadenaPreOrden(txtPreOrden.Text);
+            
             Grafica graficar = new Grafica();
             graficar.Show();
+        }
+
+        private void btnContar_Click(object sender, EventArgs e)
+        {
+            int num = ServicioArbolBinario.darNodos();
+
+            txtNumNodos.Text = num+"";
         }
     }
 }

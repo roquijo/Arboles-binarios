@@ -48,6 +48,9 @@
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGraficar = new System.Windows.Forms.Button();
+            this.txtNumNodos = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnContar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,7 +72,7 @@
             // 
             // txtResultado
             // 
-            this.txtResultado.Location = new System.Drawing.Point(80, 265);
+            this.txtResultado.Location = new System.Drawing.Point(80, 320);
             this.txtResultado.Name = "txtResultado";
             this.txtResultado.Size = new System.Drawing.Size(241, 20);
             this.txtResultado.TabIndex = 3;
@@ -77,7 +80,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 265);
+            this.label2.Location = new System.Drawing.Point(8, 320);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 4;
@@ -95,7 +98,7 @@
             // 
             // btnEvaluarArbol
             // 
-            this.btnEvaluarArbol.Location = new System.Drawing.Point(327, 262);
+            this.btnEvaluarArbol.Location = new System.Drawing.Point(327, 317);
             this.btnEvaluarArbol.Name = "btnEvaluarArbol";
             this.btnEvaluarArbol.Size = new System.Drawing.Size(96, 23);
             this.btnEvaluarArbol.TabIndex = 14;
@@ -105,7 +108,7 @@
             // 
             // btnPreOrden
             // 
-            this.btnPreOrden.Location = new System.Drawing.Point(327, 122);
+            this.btnPreOrden.Location = new System.Drawing.Point(327, 137);
             this.btnPreOrden.Name = "btnPreOrden";
             this.btnPreOrden.Size = new System.Drawing.Size(96, 23);
             this.btnPreOrden.TabIndex = 15;
@@ -115,7 +118,7 @@
             // 
             // btnInOrden
             // 
-            this.btnInOrden.Location = new System.Drawing.Point(327, 168);
+            this.btnInOrden.Location = new System.Drawing.Point(327, 183);
             this.btnInOrden.Name = "btnInOrden";
             this.btnInOrden.Size = new System.Drawing.Size(96, 23);
             this.btnInOrden.TabIndex = 16;
@@ -125,7 +128,7 @@
             // 
             // btnPosOrden
             // 
-            this.btnPosOrden.Location = new System.Drawing.Point(327, 215);
+            this.btnPosOrden.Location = new System.Drawing.Point(327, 230);
             this.btnPosOrden.Name = "btnPosOrden";
             this.btnPosOrden.Size = new System.Drawing.Size(96, 23);
             this.btnPosOrden.TabIndex = 17;
@@ -135,21 +138,21 @@
             // 
             // txtPreOrden
             // 
-            this.txtPreOrden.Location = new System.Drawing.Point(80, 122);
+            this.txtPreOrden.Location = new System.Drawing.Point(80, 137);
             this.txtPreOrden.Name = "txtPreOrden";
             this.txtPreOrden.Size = new System.Drawing.Size(241, 20);
             this.txtPreOrden.TabIndex = 18;
             // 
             // txtInOrden
             // 
-            this.txtInOrden.Location = new System.Drawing.Point(80, 168);
+            this.txtInOrden.Location = new System.Drawing.Point(80, 183);
             this.txtInOrden.Name = "txtInOrden";
             this.txtInOrden.Size = new System.Drawing.Size(241, 20);
             this.txtInOrden.TabIndex = 19;
             // 
             // txtPosOrden
             // 
-            this.txtPosOrden.Location = new System.Drawing.Point(80, 215);
+            this.txtPosOrden.Location = new System.Drawing.Point(80, 230);
             this.txtPosOrden.Name = "txtPosOrden";
             this.txtPosOrden.Size = new System.Drawing.Size(241, 20);
             this.txtPosOrden.TabIndex = 20;
@@ -157,7 +160,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 122);
+            this.label3.Location = new System.Drawing.Point(7, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 21;
@@ -166,7 +169,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 168);
+            this.label4.Location = new System.Drawing.Point(8, 183);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 13);
             this.label4.TabIndex = 22;
@@ -175,7 +178,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 215);
+            this.label5.Location = new System.Drawing.Point(7, 230);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 13);
             this.label5.TabIndex = 23;
@@ -183,7 +186,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(188, 301);
+            this.btnLimpiar.Location = new System.Drawing.Point(188, 356);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(105, 23);
             this.btnLimpiar.TabIndex = 24;
@@ -226,11 +229,40 @@
             this.btnGraficar.UseVisualStyleBackColor = true;
             this.btnGraficar.Click += new System.EventHandler(this.btnGraficar_Click);
             // 
+            // txtNumNodos
+            // 
+            this.txtNumNodos.Location = new System.Drawing.Point(80, 273);
+            this.txtNumNodos.Name = "txtNumNodos";
+            this.txtNumNodos.Size = new System.Drawing.Size(241, 20);
+            this.txtNumNodos.TabIndex = 27;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(11, 276);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 13);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "# Nodos =";
+            // 
+            // btnContar
+            // 
+            this.btnContar.Location = new System.Drawing.Point(327, 270);
+            this.btnContar.Name = "btnContar";
+            this.btnContar.Size = new System.Drawing.Size(96, 23);
+            this.btnContar.TabIndex = 29;
+            this.btnContar.Text = "Contar";
+            this.btnContar.UseVisualStyleBackColor = true;
+            this.btnContar.Click += new System.EventHandler(this.btnContar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 336);
+            this.ClientSize = new System.Drawing.Size(449, 396);
+            this.Controls.Add(this.btnContar);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtNumNodos);
             this.Controls.Add(this.btnGraficar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.label5);
@@ -283,6 +315,9 @@
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
         private System.Windows.Forms.Button btnGraficar;
+        private System.Windows.Forms.TextBox txtNumNodos;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnContar;
     }
 }
 

@@ -24,8 +24,8 @@ namespace AplicacionTestCadenas
         public const int ANCHO = 100;
         public const int RADIO = DIAMETRO_ELIPSE / 2;
         public const int MEDIDA_ELIPSE = DIAMETRO_ELIPSE + RADIO;
-        public const int TAM_HORIZONTAL = 6000;
-        public const int TAM_VERTICAL = 2000;
+        public const int TAM_HORIZONTAL = 10000;
+        public const int TAM_VERTICAL = 5000;
        
         private Image[] imagenes = new Image[7];
         
