@@ -66,8 +66,13 @@ namespace AplicacionTestCadenas
             Pen pDatos = new Pen(Color.Black);
             Pen pElipse = new Pen(Color.Red);
             Brush b = new SolidBrush(this.ForeColor);
-            imagenes[0] = Image.FromFile("imagenes/AND.jpg");
-            imagenes[1] = Image.FromFile("imagenes/OR.jpg");           
+            imagenes[0] = Image.FromFile("imagenes/and.png");
+            imagenes[1] = Image.FromFile("imagenes/or.png");
+            imagenes[2] = Image.FromFile("imagenes/nand.png");
+            imagenes[3] = Image.FromFile("imagenes/nor.png");
+            imagenes[4] = Image.FromFile("imagenes/xor.png");
+            imagenes[5] = Image.FromFile("imagenes/xnor.png");
+            imagenes[6] = Image.FromFile("imagenes/not.png");           
 
             if (pNodo == null)
             {
@@ -92,32 +97,27 @@ namespace AplicacionTestCadenas
 
                     case "&":
 
-                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDA_ELIPSE, MEDIDA_ELIPSE);
-                        pGrafica.DrawString(pNodo.getDatos(), new Font("Verdana", 15), b, x + 3, y - 10);
+                        pGrafica.DrawImage(imagenes[2], x - 10, y - 20);
                         break;
 
                     case "%":
 
-                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDA_ELIPSE, MEDIDA_ELIPSE);
-                        pGrafica.DrawString(pNodo.getDatos(), new Font("Verdana", 15), b, x , y - 10);
+                        pGrafica.DrawImage(imagenes[3], x - 10, y - 20);
                         break;
 
                     case "#":
 
-                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDA_ELIPSE, MEDIDA_ELIPSE);
-                        pGrafica.DrawString(pNodo.getDatos(), new Font("Verdana", 15), b, x + 2, y - 10);
+                        pGrafica.DrawImage(imagenes[4], x - 10, y - 20);
                         break;
 
                     case "/":
 
-                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDA_ELIPSE, MEDIDA_ELIPSE);
-                        pGrafica.DrawString(pNodo.getDatos(), new Font("Verdana", 15), b, x + 5, y - 12);
+                        pGrafica.DrawImage(imagenes[5], x - 10, y - 20);
                         break;
 
                     case "$":
 
-                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDA_ELIPSE, MEDIDA_ELIPSE);
-                        pGrafica.DrawString(pNodo.getDatos(), new Font("Verdana", 15), b, x + 3, y - 12);
+                        pGrafica.DrawImage(imagenes[6], x - 10, y - 20);
                         break;
 
                     default:
