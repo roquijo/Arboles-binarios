@@ -14,18 +14,19 @@ namespace AplicacionTestCadenas
     public partial class Grafica : Form
     {
         private int bandera;
+        public const int DIAMETRO_ELIPSE = 30;
+        public const int SEPARACION = 100;
+        public const int RADIO = DIAMETRO_ELIPSE / 2;
+        public const int MEDIDA_ELIPSE = DIAMETRO_ELIPSE + RADIO;
+        public const int TAM_HORIZONTAL = 10000;
+        public const int TAM_VERTICAL = 5000;
         public Grafica()
         {
             InitializeComponent();
             bandera = 0;
         }
 
-        public const int DIAMETRO_ELIPSE = 30;
-        public const int ANCHO = 100;
-        public const int RADIO = DIAMETRO_ELIPSE / 2;
-        public const int MEDIDA_ELIPSE = DIAMETRO_ELIPSE + RADIO;
-        public const int TAM_HORIZONTAL = 10000;
-        public const int TAM_VERTICAL = 5000;
+        
        
         private Image[] imagenes = new Image[7];
         
@@ -80,7 +81,7 @@ namespace AplicacionTestCadenas
             }
             else
             {            
-                int anchoSeparacion = ServicioArbolBinario.darNiveles(pNodo) * (ANCHO/2);
+                int anchoSeparacion = ServicioArbolBinario.darCuantosPadre(pNodo) * (SEPARACION/2);
                 String cadena = pNodo.getDatos();
                 switch (cadena)
                 {
@@ -129,14 +130,14 @@ namespace AplicacionTestCadenas
 
                 if (pNodo.getIzq() != null)
                 {
-                    pGrafica.DrawLine(pDatos, x-10, y + 2, x - ANCHO - anchoSeparacion + RADIO, y + ANCHO - RADIO - 5 );
+                    pGrafica.DrawLine(pDatos, x-10, y + 2, x - SEPARACION - anchoSeparacion + RADIO, y + SEPARACION - RADIO - 5 );
                 }
                 if (pNodo.getDer() != null)
                 {
-                    pGrafica.DrawLine(pDatos, x + 58, y + 2, x + ANCHO + anchoSeparacion + RADIO, y + ANCHO - RADIO - 5 );
+                    pGrafica.DrawLine(pDatos, x + 58, y + 2, x + SEPARACION + anchoSeparacion + RADIO, y + SEPARACION - RADIO - 5 );
                 }
-                mostrarArbol(pGrafica, x - ANCHO - anchoSeparacion, y + ANCHO, pNodo.getIzq());
-                mostrarArbol(pGrafica, x + ANCHO + anchoSeparacion, y + ANCHO, pNodo.getDer());
+                mostrarArbol(pGrafica, x - SEPARACION - anchoSeparacion, y + SEPARACION, pNodo.getIzq());
+                mostrarArbol(pGrafica, x + SEPARACION + anchoSeparacion, y + SEPARACION, pNodo.getDer());
             }
         }
     }

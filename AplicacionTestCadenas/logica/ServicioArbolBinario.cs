@@ -26,7 +26,7 @@ namespace AplicacionTestCadenas.logica
         {
             raiz = pRaiz;
         }
-        public static int darNiveles(Nodo pNodo)
+        public static int darCuantosPadre(Nodo pNodo)
         {
             if (pNodo == null)
             {
@@ -36,9 +36,9 @@ namespace AplicacionTestCadenas.logica
             {
                 if (pNodo.getIzq() != null && pNodo.getDer() != null)
                 {
-                    return darNiveles(pNodo.getIzq()) + darNiveles(pNodo.getDer()) + 1;
+                    return darCuantosPadre(pNodo.getIzq()) + darCuantosPadre(pNodo.getDer()) + 1;
                 }
-                return darNiveles(pNodo.getIzq()) + darNiveles(pNodo.getDer());
+                return darCuantosPadre(pNodo.getIzq()) + darCuantosPadre(pNodo.getDer());
             }
         }
 
