@@ -133,7 +133,7 @@ namespace AplicacionTestCadenas
                 }
                 if (pNodo.getDer() != null)
                 {
-                    pGrafica.DrawLine(pDatos, x + 35, y + 2, x + ANCHO + anchoSeparacion + RADIO, y + ANCHO - RADIO - 5 );
+                    pGrafica.DrawLine(pDatos, x + 58, y + 2, x + ANCHO + anchoSeparacion + RADIO, y + ANCHO - RADIO - 5 );
                 }
                 mostrarArbol(pGrafica, x - ANCHO - anchoSeparacion, y + ANCHO, pNodo.getIzq());
                 mostrarArbol(pGrafica, x + ANCHO + anchoSeparacion, y + ANCHO, pNodo.getDer());
