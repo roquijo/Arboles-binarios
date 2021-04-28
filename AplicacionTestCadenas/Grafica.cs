@@ -26,6 +26,9 @@ namespace AplicacionTestCadenas
         public const int MEDIDA_ELIPSE = DIAMETRO_ELIPSE + RADIO;
         public const int TAM_HORIZONTAL = 4000;
         public const int TAM_VERTICAL = 2000;
+       
+        private Image[] imagenes = new Image[2];
+        
 
         private void btnGraficar_Click(object sender, EventArgs e)
         {
@@ -63,6 +66,8 @@ namespace AplicacionTestCadenas
             Pen pDatos = new Pen(Color.Black);
             Pen pElipse = new Pen(Color.Red);
             Brush b = new SolidBrush(this.ForeColor);
+            imagenes[0] = Image.FromFile("imagenes/AND.jpg");
+            imagenes[1] = Image.FromFile("imagenes/OR.jpg");           
 
             if (pNodo == null)
             {
@@ -76,15 +81,13 @@ namespace AplicacionTestCadenas
                 {
 
                     case "*":
-                        
-                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDA_ELIPSE, MEDIDA_ELIPSE);
-                        pGrafica.DrawString(pNodo.getDatos(), new Font("Verdana", 15), b, x + 3, y - 6);
+
+                        pGrafica.DrawImage(imagenes[0], x - 10, y - 20);                      
                         break;
 
                     case "+":
 
-                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDA_ELIPSE, MEDIDA_ELIPSE);
-                        pGrafica.DrawString(pNodo.getDatos(), new Font("Verdana", 15), b, x + 2, y - 13);
+                        pGrafica.DrawImage(imagenes[1], x - 10, y - 20);
                         break;
 
                     case "&":
