@@ -13,21 +13,50 @@ namespace AplicacionTestCadenas
 {
     public partial class Grafica : Form
     {
+        private int bandera;
         public Grafica()
         {
             InitializeComponent();
+            bandera = 0;
         }
+
+        public const int DIAMETRO_ELIPSE = 30;
+        public const int ANCHO = 80;
+        public const int RADIO = DIAMETRO_ELIPSE / 2;
+        public const int MEDIDA_ELIPSE = DIAMETRO_ELIPSE + RADIO;
+        public const int TAM_HORIZONTAL = 4000;
+        public const int TAM_VERTICAL = 2000;
 
         private void btnGraficar_Click(object sender, EventArgs e)
         {
-            Graphics grafica = lienzo.CreateGraphics();
-            mostrarArbol(grafica, lienzo.Width/2, 30, ServicioArbolBinario.getRaiz());
+         
+            bandera = 1;
+           
+            lienzo.AutoScroll = true;
+            lienzo.AutoScrollMinSize = new Size(TAM_HORIZONTAL, TAM_VERTICAL);
+
+            lienzo.Paint += lienzo_Paint;
+            
         }
 
-        public const int DIAMETRO = 30;
-        public const int ANCHO = 50;
-        public const int RADIO = DIAMETRO / 2;
-        public const int MEDIDAELIPSE = DIAMETRO + RADIO;
+        private void lienzo_Paint(object sender, PaintEventArgs e)
+        {
+            if (bandera == 0)
+            {
+                return;
+            }
+           
+            int mitadAncho = 0;           
+
+            Graphics g;          
+            
+            g = lienzo.CreateGraphics();          
+           
+            mitadAncho = TAM_HORIZONTAL / 2;
+                        
+            g.TranslateTransform(lienzo.AutoScrollPosition.X, lienzo.AutoScrollPosition.Y);
+            mostrarArbol(g, mitadAncho, 30, ServicioArbolBinario.getRaiz());
+        }
 
         private void mostrarArbol(Graphics pGrafica, int x, int y, Nodo pNodo)
         {
@@ -41,56 +70,56 @@ namespace AplicacionTestCadenas
             }
             else
             {            
-                int anchoSeparacion = x / (ServicioArbolBinario.darNodos().Length-1);
+                int anchoSeparacion = ServicioArbolBinario.darNiveles(pNodo) * (ANCHO/2);
                 String cadena = pNodo.getDatos();
                 switch (cadena)
                 {
 
                     case "*":
                         
-                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDAELIPSE, MEDIDAELIPSE);
+                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDA_ELIPSE, MEDIDA_ELIPSE);
                         pGrafica.DrawString(pNodo.getDatos(), new Font("Verdana", 15), b, x + 3, y - 6);
                         break;
 
                     case "+":
 
-                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDAELIPSE, MEDIDAELIPSE);
+                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDA_ELIPSE, MEDIDA_ELIPSE);
                         pGrafica.DrawString(pNodo.getDatos(), new Font("Verdana", 15), b, x + 2, y - 13);
                         break;
 
                     case "&":
 
-                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDAELIPSE, MEDIDAELIPSE);
+                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDA_ELIPSE, MEDIDA_ELIPSE);
                         pGrafica.DrawString(pNodo.getDatos(), new Font("Verdana", 15), b, x + 3, y - 10);
                         break;
 
                     case "%":
 
-                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDAELIPSE, MEDIDAELIPSE);
+                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDA_ELIPSE, MEDIDA_ELIPSE);
                         pGrafica.DrawString(pNodo.getDatos(), new Font("Verdana", 15), b, x , y - 10);
                         break;
 
                     case "#":
 
-                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDAELIPSE, MEDIDAELIPSE);
+                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDA_ELIPSE, MEDIDA_ELIPSE);
                         pGrafica.DrawString(pNodo.getDatos(), new Font("Verdana", 15), b, x + 2, y - 10);
                         break;
 
                     case "/":
 
-                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDAELIPSE, MEDIDAELIPSE);
+                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDA_ELIPSE, MEDIDA_ELIPSE);
                         pGrafica.DrawString(pNodo.getDatos(), new Font("Verdana", 15), b, x + 5, y - 12);
                         break;
 
                     case "$":
 
-                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDAELIPSE, MEDIDAELIPSE);
+                        pGrafica.DrawEllipse(pElipse, x - 10, y - 20, MEDIDA_ELIPSE, MEDIDA_ELIPSE);
                         pGrafica.DrawString(pNodo.getDatos(), new Font("Verdana", 15), b, x + 3, y - 12);
                         break;
 
                     default:
 
-                        pGrafica.DrawEllipse(pDatos, x - 10, y - 20, MEDIDAELIPSE, MEDIDAELIPSE);
+                        pGrafica.DrawEllipse(pDatos, x - 10, y - 20, MEDIDA_ELIPSE, MEDIDA_ELIPSE);
                         pGrafica.DrawString(pNodo.getDatos(), new Font("Verdana", 15), b, x + 3, y - 12);
                         break;
                 }

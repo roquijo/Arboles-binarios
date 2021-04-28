@@ -139,7 +139,6 @@
             this.txtPreOrden.Name = "txtPreOrden";
             this.txtPreOrden.Size = new System.Drawing.Size(241, 20);
             this.txtPreOrden.TabIndex = 18;
-            this.txtPreOrden.Text = "+,1,1,";
             // 
             // txtInOrden
             // 

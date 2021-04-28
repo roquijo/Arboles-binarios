@@ -37,6 +37,21 @@ namespace AplicacionTestCadenas.logica
         {
             raiz = pRaiz;
         }
+        public static int darNiveles(Nodo pNodo)
+        {
+            if (pNodo == null)
+            {
+                return 0;
+            }
+            else
+            {
+                if (pNodo.getIzq() != null && pNodo.getDer() != null)
+                {
+                    return darNiveles(pNodo.getIzq()) + darNiveles(pNodo.getDer()) + 1;
+                }
+                return darNiveles(pNodo.getIzq()) + darNiveles(pNodo.getDer());
+            }
+        }
 
         public static int encontrarOperadorPrincipal(String cadena)
         {

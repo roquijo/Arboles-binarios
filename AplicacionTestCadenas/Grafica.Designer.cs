@@ -35,17 +35,15 @@ namespace AplicacionTestCadenas
             // 
             // lienzo
             // 
-            this.lienzo.AutoSize = true;
             this.lienzo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lienzo.Enabled = false;
             this.lienzo.Location = new System.Drawing.Point(12, 12);
             this.lienzo.Name = "lienzo";
-            this.lienzo.Size = new System.Drawing.Size(978, 443);
+            this.lienzo.Size = new System.Drawing.Size(1259, 661);
             this.lienzo.TabIndex = 0;
             // 
             // btnGraficar
             // 
-            this.btnGraficar.Location = new System.Drawing.Point(458, 489);
+            this.btnGraficar.Location = new System.Drawing.Point(618, 686);
             this.btnGraficar.Name = "btnGraficar";
             this.btnGraficar.Size = new System.Drawing.Size(75, 23);
             this.btnGraficar.TabIndex = 1;
@@ -57,14 +55,13 @@ namespace AplicacionTestCadenas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1002, 543);
+            this.ClientSize = new System.Drawing.Size(1283, 721);
             this.Controls.Add(this.btnGraficar);
             this.Controls.Add(this.lienzo);
             this.Name = "Grafica";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Graficar Arbol";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

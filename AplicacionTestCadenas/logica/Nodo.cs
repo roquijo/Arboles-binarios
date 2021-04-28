@@ -62,21 +62,5 @@ namespace AplicacionTestCadenas.logica
         {
             return raiz;
         }
-
-        public static int darTodoNodos(Nodo pNodo)
-        {
-            if (pNodo == null)
-            {
-                return 0;
-            }
-            else
-            {
-                if (pNodo.getIzq() != null && pNodo.getDer() != null)
-                {
-                    return darTodoNodos(pNodo.getIzq()) + darTodoNodos(pNodo.getDer()) + 1;
-                }
-                return darTodoNodos(pNodo.getIzq()) + darTodoNodos(pNodo.getDer());
-            }
-        }
     }
 }
